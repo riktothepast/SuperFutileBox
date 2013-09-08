@@ -41,8 +41,8 @@ public class Player : Entity {
 		
 		pd = new FParticleDefinition("Futile_White");
 		pd.endScale = 0.2f;
-		pd.startColor = new Color(80,90,0,1);
-		pd.endColor = new Color (250, 250, 250,1f);
+		pd.startColor = new Color(80,90,0,0.8f);
+		pd.endColor = new Color (250, 250, 250,0.1f);
 	}
 	
 	public override void InitPhysics()
@@ -73,6 +73,12 @@ public class Player : Entity {
 			}
             Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
+		if(collision.collider.name.Equals("Bottom"))
+				kill();
+			
+		if(collision.collider.name.Equals("Enemy"))
+			kill ();
+		
 		if(collision.collider.name.Equals("Platform"))
 					generateParticles();
     }
@@ -121,5 +127,26 @@ public class Player : Entity {
 				pd.lifetime = RXRandom.Range(0.2f, 0.5f);
 				this.GamePage.impactParticles.AddParticle(pd);
 			}
+	}
+	
+	void kill (){
+		pd = new FParticleDefinition("Futile_White");
+		pd.endScale = 0.2f;
+		pd.startColor = new Color(250,0,0,0.8f);
+		pd.endColor = new Color (250, 0, 0,0.1f);
+		int part=RXRandom.Range(16, 32);
+			for(int x=0;x<part;x++){
+				pd.x = gameObject.rigidbody.position.x*FPhysics.METERS_TO_POINTS + RXRandom.Range(-10.0f, 10.0f);
+				pd.y = (gameObject.rigidbody.position.y)*FPhysics.METERS_TO_POINTS-+ RXRandom.Range(-10.0f, 10.0f);
+				Vector2 speed = RXRandom.Vector2Normalized() * RXRandom.Range(20.0f,80.0f);
+				pd.speedX = speed.x;
+				pd.speedY = speed.y;
+				pd.lifetime = RXRandom.Range(1f, 5f);
+				this.GamePage.impactParticles.AddParticle(pd);
+			}
+		UnityEngine.Object.Destroy(gameObject);
+		Holder.RemoveFromContainer();
+		GamePage.callGameOver();
+
 	}
 }

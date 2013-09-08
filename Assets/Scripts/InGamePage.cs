@@ -14,12 +14,12 @@ public class InGamePage : Page {
 	public List<Projectile> projectiles = new List<Projectile>();
 	public List<Enemy> enemies = new List<Enemy>();
 	Player jugador;
-	public Vector2 SpawnPoint=new Vector2(0,350);
+	public Vector2 SpawnPoint=new Vector2(0,300);
 	public bool leftArrow, rightArrow;
 	RXCircle midBounds;
 	public FParticleSystem impactParticles;
 	public FParticleSystem projectilesParticles;
-	float maxSpeed=1f;
+	FLabel scoreLabel, gameOver;
 	int _frameCount = 0;
 	int Score;
 	public FPWorld root;
@@ -46,6 +46,10 @@ public class InGamePage : Page {
 		
 		CreateWorld();
 		InitPlayer();
+		scoreLabel = new FLabel("font", "Score = "+ Score);
+		gameOver = new FLabel("font", "Game Over, try again!");
+		scoreLabel.SetAnchor(new Vector2(0,-10));
+		AddChild(scoreLabel);
 	}
 	
 	// Update is called once per frame
@@ -54,6 +58,7 @@ public class InGamePage : Page {
 		foreach(Platform platform in platforms){
 			platform.Update();
 		}
+		if(!GameOver){
 		//Key Controllers
 		if (Input.GetKeyDown (KeyCode.LeftArrow)){
 			leftArrow=true;
@@ -73,7 +78,7 @@ public class InGamePage : Page {
 		if (Input.GetKeyUp (KeyCode.RightArrow)){
 			rightArrow=false;
 		}	
-		
+		}
 		if((_frameCount%120)==0){
 				GenerateMonster();
 		}
@@ -89,29 +94,28 @@ public class InGamePage : Page {
 	
 	void CreateWorld(){
 		//top
-		Platform plat= Platform.Create(this,new Vector2(-340,50),0f,new Vector2(340,40),new FSprite("Futile_White"), "Platform");
+		Platform plat= Platform.Create(this,new Vector2(-340,50),0f,new Vector2(340,40),new FSprite("platform"), "Platform");
 		plat.Init();
-		plat= Platform.Create(this,new Vector2(340,50),0f,new Vector2(340,40),new FSprite("Futile_White"),"Platform");
+		plat= Platform.Create(this,new Vector2(340,50),0f,new Vector2(340,40),new FSprite("platform"),"Platform");
 		plat.Init();
-		plat= Platform.Create(this,new Vector2(0,250),0f,new Vector2(340,40),new FSprite("Futile_White"),"Platform");
+		plat= Platform.Create(this,new Vector2(0,250),0f,new Vector2(340,40),new FSprite("platform"),"Platform");
 		plat.Init();
 		//middle
-		plat= Platform.Create(this,new Vector2(0,-150),0f,new Vector2(340,40),new FSprite("Futile_White"),"Platform");
+		plat= Platform.Create(this,new Vector2(0,-150),0f,new Vector2(340,40),new FSprite("platform"),"Platform");
 		plat.Init();		
 		//bottoms
-		plat= Platform.Create(this,new Vector2(-340,-340),0f,new Vector2(340,40),new FSprite("Futile_White"),"Platform");
+		plat= Platform.Create(this,new Vector2(-340,-340),0f,new Vector2(340,40),new FSprite("platform"),"Platform");
 		plat.Init();
-		plat= Platform.Create(this,new Vector2(340,-340),0f,new Vector2(340,40),new FSprite("Futile_White"),"Platform");
+		plat= Platform.Create(this,new Vector2(340,-340),0f,new Vector2(340,40),new FSprite("platform"),"Platform");
 		plat.Init();
 		//left to right
-		plat= Platform.Create(this,new Vector2(500,0),0f,new Vector2(40,1000),new FSprite("Futile_White"),"Left");
+		plat= Platform.Create(this,new Vector2(520,0),0f,new Vector2(40,1000),new FSprite("bounds"),"Left");
 		plat.Init();
-		plat= Platform.Create(this,new Vector2(-500,0),0f,new Vector2(40,1000),new FSprite("Futile_White"),"Right");
+		plat= Platform.Create(this,new Vector2(-520,0),0f,new Vector2(40,1000),new FSprite("bounds"),"Right");
 		plat.Init();
 		//enemy goal
 		plat= Platform.Create(this,new Vector2(0,-380),0f,new Vector2(340,40),new FSprite("Futile_White"),"Bottom");
 		plat.Init();
-		
 	}
 	
 	void InitPlayer(){
@@ -177,6 +181,14 @@ public class InGamePage : Page {
 				Debug.Log( "rotation recognizer fired: " + r );
 			};
 			TouchKit.addGestureRecognizer( RotationRecognizer );
+	}
+	public void setScore(int x){
+		Score+=x;	
+		scoreLabel.text="Score = "+ Score;
+	}
+	public void callGameOver(){
+		GameOver=true;
+		AddChild(gameOver);
 	}
 	
 	//set to get

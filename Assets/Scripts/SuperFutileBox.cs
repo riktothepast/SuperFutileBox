@@ -32,8 +32,11 @@ public class SuperFutileBox : MonoBehaviour {
 //		fparams.AddResolutionLevel(2048.0f,	4.0f,	4.0f,	"_Scale4"); //iPad Retina
 
 		fparams.origin = new Vector2(0.5f,0.5f);
-				
+		
 		Futile.instance.Init (fparams);
+		Futile.atlasManager.LoadAtlas("Atlases/SFB"); 
+				Futile.atlasManager.LoadFont("font", "font", "Atlases/font", 0, 0);
+
 		
 		_stage = Futile.stage;
 		

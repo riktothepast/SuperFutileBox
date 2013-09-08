@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{AFADF9C8-67BA-967B-18F9-802762F6B22F}</ProjectGuid>
+	<ProjectGuid>{CF6D8E03-A4D4-56BD-E468-A59EC375C5E7}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -60,9 +60,11 @@
      <Compile Include="Assets\Plugins\TouchKit\TouchKit.cs" />
      <None Include="Assets\Futile\Resources\Shaders\AdditiveColor.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Additive.shader" />
+     <None Include="Assets\Resources\Atlases\font.txt" />
      <None Include="Assets\Futile\Resources\Shaders\Basic.shader" />
      <None Include="Assets\Futile\Resources\Shaders\SolidColored.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Solid.shader" />
+     <None Include="Assets\Resources\Atlases\SFB.txt" />
  <Reference Include="GoKit">
  <HintPath>Assets\Futile\ThirdParty\GoKit.dll</HintPath>
  </Reference>

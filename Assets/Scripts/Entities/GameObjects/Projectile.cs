@@ -15,7 +15,7 @@ public class Projectile : Entity {
 		body.Aceleration=Aceleration;
 		body.Size=new Vector2(10,10);
 		body.Sprite = new FSprite("Futile_White");
-		Color cl =new Color(0,90,0,1);
+		Color cl =new Color(60,60,60,1);
 		body.Sprite.color=cl;
 		body.Sprite.width = body.Size.x;
 		body.Sprite.height = body.Size.y;
@@ -52,10 +52,12 @@ public class Projectile : Entity {
 	
 		void OnCollisionEnter(Collision collision) {
 			if(collision.collider.name.Equals("Platform")||collision.collider.name.Equals("Left")||collision.collider.name.Equals("Right")){
+				Debug.Log("plataform");
 				Destroy();
 			}
 			if(collision.collider.name.Equals("Enemy")){
 				collision.gameObject.SendMessage("RestLife",1);
+				GamePage.setScore(10);
 				Destroy();
 			}
     }

@@ -27,7 +27,6 @@ public class Enemy : Entity {
 	public override void Init(){
 		GamePage._gameObjects.AddChild(Holder = new FContainer());
 		gameObject.transform.position = new Vector3(Position.x * FPhysics.POINTS_TO_METERS,Position.y * FPhysics.POINTS_TO_METERS,32);
-		Debug.Log(Position);
 		gameObject.transform.parent = GamePage.root.transform;
 		bodyLink = gameObject.AddComponent<FPNodeLink>();
 		bodyLink.Init(Holder, false);
@@ -41,8 +40,8 @@ public class Enemy : Entity {
 		
 		pd = new FParticleDefinition("Futile_White");
 		pd.endScale = 0.2f;
-		pd.startColor = new Color(250,0,0,1f);
-		pd.endColor = new Color (250, 0, 0,0.01f);
+		pd.startColor = new Color(0,250,0,1f);
+		pd.endColor = new Color (0, 90,0,0.01f);
 	}
 	
 	public override void InitPhysics(){

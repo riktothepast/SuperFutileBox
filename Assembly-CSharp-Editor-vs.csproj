@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{1DDC5AF7-239B-7B78-8D1A-DA95F71679DE}</ProjectGuid>
+	<ProjectGuid>{CDF73B29-30B7-F7A4-5F8D-A60BCCE826FE}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -48,9 +48,11 @@
      <Compile Include="Assets\Futile\Rix\Editor\RXWatcherLinkEditor.cs" />
      <None Include="Assets\Futile\Resources\Shaders\AdditiveColor.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Additive.shader" />
+     <None Include="Assets\Resources\Atlases\font.txt" />
      <None Include="Assets\Futile\Resources\Shaders\Basic.shader" />
      <None Include="Assets\Futile\Resources\Shaders\SolidColored.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Solid.shader" />
+     <None Include="Assets\Resources\Atlases\SFB.txt" />
  <Reference Include="GoKit">
  <HintPath>Assets\Futile\ThirdParty\GoKit.dll</HintPath>
  </Reference>
@@ -75,9 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{AFADF9C8-67BA-967B-18F9-802762F6B22F}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{CF6D8E03-A4D4-56BD-E468-A59EC375C5E7}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp-vs.csproj">
-      <Project>{BCD11979-4D0A-64D3-3FB1-857A58F5E051}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
+      <Project>{2219AFCD-74E4-5B80-5B8A-48056C374F65}</Project>      <Name>Assembly-CSharp-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

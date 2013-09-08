@@ -12,8 +12,6 @@ public class Platform : Entity {
 		body.Position=pos;
 		body.Size=size;
 		body.Sprite = sprite;
-		Color cl =new Color(255,255,255,0.3f);
-		body.Sprite.color=cl;
 		body.Sprite.width = size.x;
 		body.Sprite.height = size.y;
 		body.Rotation=angulo;

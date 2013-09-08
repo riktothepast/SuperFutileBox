@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{BCD11979-4D0A-64D3-3FB1-857A58F5E051}</ProjectGuid>
+	<ProjectGuid>{2219AFCD-74E4-5B80-5B8A-48056C374F65}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -100,16 +100,18 @@
      <Compile Include="Assets\Scripts\SuperFutileBox.cs" />
      <None Include="Assets\Futile\Resources\Shaders\AdditiveColor.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Additive.shader" />
+     <None Include="Assets\Resources\Atlases\font.txt" />
      <None Include="Assets\Futile\Resources\Shaders\Basic.shader" />
      <None Include="Assets\Futile\Resources\Shaders\SolidColored.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Solid.shader" />
+     <None Include="Assets\Resources\Atlases\SFB.txt" />
  <Reference Include="GoKit">
  <HintPath>Assets\Futile\ThirdParty\GoKit.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{AFADF9C8-67BA-967B-18F9-802762F6B22F}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{CF6D8E03-A4D4-56BD-E468-A59EC375C5E7}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
