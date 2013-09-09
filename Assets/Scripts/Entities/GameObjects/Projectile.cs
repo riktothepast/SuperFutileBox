@@ -13,9 +13,9 @@ public class Projectile : Entity {
 		body.GamePage = world;
 		body.Position=pos;
 		body.Aceleration=Aceleration;
-		body.Size=new Vector2(10,10);
+		body.Size=new Vector2(8,5);
 		body.Sprite = new FSprite("Futile_White");
-		Color cl =new Color(60,60,60,1);
+		Color cl =new Color(80,90,0,1);
 		body.Sprite.color=cl;
 		body.Sprite.width = body.Size.x;
 		body.Sprite.height = body.Size.y;

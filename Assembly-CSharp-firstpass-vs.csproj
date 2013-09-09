@@ -58,6 +58,7 @@
      <Compile Include="Assets\Plugins\TouchKit\Recognizers\TKSwipeRecognizer.cs" />
      <Compile Include="Assets\Plugins\TouchKit\Recognizers\TKTapRecognizer.cs" />
      <Compile Include="Assets\Plugins\TouchKit\TouchKit.cs" />
+     <None Include="Assets\Resources\Atlases\SFB_en.txt" />
      <None Include="Assets\Futile\Resources\Shaders\AdditiveColor.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Additive.shader" />
      <None Include="Assets\Resources\Atlases\font.txt" />

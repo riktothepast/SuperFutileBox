@@ -89,6 +89,8 @@
      <Compile Include="Assets\Futile\Rix\RXUtils.cs" />
      <Compile Include="Assets\Futile\Rix\RXWatcher.cs" />
      <Compile Include="Assets\Futile\ThirdParty\MiniJson.cs" />
+     <Compile Include="Assets\Futile\ThirdParty\addons\FAnimatedSprite.cs" />
+     <Compile Include="Assets\Futile\ThirdParty\addons\FAnimation.cs" />
      <Compile Include="Assets\Scripts\Entities\Enemy.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
      <Compile Include="Assets\Scripts\Entities\GameObjects\Platform.cs" />
@@ -98,6 +100,7 @@
      <Compile Include="Assets\Scripts\MenuPage.cs" />
      <Compile Include="Assets\Scripts\Page.cs" />
      <Compile Include="Assets\Scripts\SuperFutileBox.cs" />
+     <None Include="Assets\Resources\Atlases\SFB_en.txt" />
      <None Include="Assets\Futile\Resources\Shaders\AdditiveColor.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Additive.shader" />
      <None Include="Assets\Resources\Atlases\font.txt" />

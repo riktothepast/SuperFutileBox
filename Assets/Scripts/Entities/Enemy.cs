@@ -8,12 +8,14 @@ public class Enemy : Entity {
 	int direction;
 	int life;
 	float speed=0.05f;
+	private FAnimatedSprite sprite;
+
 	public static Enemy Create(InGamePage world, Vector2 pos, int direction){
 		GameObject GObj = new GameObject("Enemy");
 		Enemy body = GObj.AddComponent<Enemy>();
 		body.GamePage = world;
 		body.Position=pos;
-		body.Size=new Vector2(40,40);
+		body.Size=new Vector2(80,80);
 		body.Sprite = new FSprite("Futile_White");
 		Color cl =new Color(0,0,90,1);
 		body.Sprite.color=cl;
@@ -21,6 +23,8 @@ public class Enemy : Entity {
 		body.Sprite.height = body.Size.y;
 		body.direction=direction;
 		body.life=3;
+		body.sprite = new FAnimatedSprite(new FAnimation("enewalk","enewalk",80,80,0,0,2,120,true));
+
 		return body;
 	}
 	
@@ -30,7 +34,7 @@ public class Enemy : Entity {
 		gameObject.transform.parent = GamePage.root.transform;
 		bodyLink = gameObject.AddComponent<FPNodeLink>();
 		bodyLink.Init(Holder, false);
-		Holder.AddChild(Sprite);
+		Holder.AddChild(sprite);
 		AngularDrag=5f;
 		Mass=1f;
 		Bounciness=0.5f;
@@ -62,10 +66,14 @@ public class Enemy : Entity {
 	
 	public override void Update(){
 		if(direction>0){
+			sprite.scaleX=1f;
 			gameObject.transform.position = new Vector3(gameObject.transform.position.x+speed, gameObject.transform.position.y, gameObject.transform.position.z);		
 		}else{
+			sprite.scaleX=-1f;
 			gameObject.transform.position = new Vector3(gameObject.transform.position.x-speed, gameObject.transform.position.y, gameObject.transform.position.z);		
 		}
+		sprite.play("enewalk");
+
 		if(life<=0){
 			generateParticles();
 			Destroy();
@@ -73,8 +81,9 @@ public class Enemy : Entity {
 	}
 	
 	void OnCollisionEnter(Collision collision) {
-		if(collision.collider.name.Equals("Left")||collision.collider.name.Equals("Right")||collision.collider.name.Equals("Enemy"))
+		if(collision.collider.name.Equals("Left")||collision.collider.name.Equals("Right")||collision.collider.name.Equals("Enemy")){
 					direction*=-1;
+		}
 		if(collision.collider.name.Equals("Bottom")){
 					gameObject.transform.position = new Vector3(GamePage.SpawnPoint.x * FPhysics.POINTS_TO_METERS,GamePage.SpawnPoint.y * FPhysics.POINTS_TO_METERS,32);
 					speed+=0.01f;
@@ -90,6 +99,8 @@ public class Enemy : Entity {
 	void Destroy(){
 		UnityEngine.Object.Destroy(gameObject);
 		Holder.RemoveFromContainer();
+								FSoundManager.PlaySound("atari_boom4");
+
 	}
 	
 		void generateParticles(){

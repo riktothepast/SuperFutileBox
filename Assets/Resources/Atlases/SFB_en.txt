@@ -1,0 +1,36 @@
+{"frames": {
+
+"enewalk.png":
+{
+	"frame": {"x":2,"y":44,"w":156,"h":78},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":2,"w":156,"h":78},
+	"sourceSize": {"w":160,"h":80}
+},
+"running.png":
+{
+	"frame": {"x":80,"y":2,"w":76,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":76,"h":40},
+	"sourceSize": {"w":80,"h":40}
+},
+"standing.png":
+{
+	"frame": {"x":2,"y":2,"w":76,"h":40},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":2,"y":0,"w":76,"h":40},
+	"sourceSize": {"w":80,"h":40}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker ",
+	"version": "1.0",
+	"image": "SFB_en.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":128},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:45b4869b74b195d3376789f8aa40ba91:1/1$"
+}
+}

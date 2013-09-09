@@ -14,6 +14,9 @@ public class Platform : Entity {
 		body.Sprite = sprite;
 		body.Sprite.width = size.x;
 		body.Sprite.height = size.y;
+		if(name.Equals("Bottom")){
+		Color cl =new Color(250,0,0,1);
+		body.Sprite.color=cl;}
 		body.Rotation=angulo;
 		body.transform.Rotate(new Vector3(0,0,angulo));
 		return body;

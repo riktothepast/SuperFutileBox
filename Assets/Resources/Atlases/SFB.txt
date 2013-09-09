@@ -1,8 +1,16 @@
 {"frames": {
 
+"boton.png":
+{
+	"frame": {"x":260,"y":2,"w":100,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":60},
+	"sourceSize": {"w":100,"h":60}
+},
 "bounds.png":
 {
-	"frame": {"x":2,"y":2,"w":40,"h":320},
+	"frame": {"x":2,"y":160,"w":40,"h":320},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":320},
@@ -10,7 +18,7 @@
 },
 "font.png":
 {
-	"frame": {"x":2,"y":324,"w":256,"h":156},
+	"frame": {"x":2,"y":2,"w":256,"h":156},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":156},
@@ -18,7 +26,7 @@
 },
 "platform.png":
 {
-	"frame": {"x":44,"y":2,"w":320,"h":40},
+	"frame": {"x":44,"y":160,"w":320,"h":40},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":40},
@@ -31,6 +39,6 @@
 	"format": "RGBA8888",
 	"size": {"w":512,"h":512},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:296fc3ad236ed530cb55e1d88230de03:1/1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:0de91707144e5c742f90bda404cf4079:1/1$"
 }
 }

@@ -151,6 +151,7 @@
             <filename>../../../../../../Desktop/SFB/platform.png</filename>
             <filename>../../../../../../Desktop/SFB/bounds.png</filename>
             <filename>../../../../../../Desktop/SFB/font.png</filename>
+            <filename>../../../../../../Desktop/SFB/boton.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

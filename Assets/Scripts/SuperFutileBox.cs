@@ -35,12 +35,14 @@ public class SuperFutileBox : MonoBehaviour {
 		
 		Futile.instance.Init (fparams);
 		Futile.atlasManager.LoadAtlas("Atlases/SFB"); 
+				Futile.atlasManager.LoadAtlas("Atlases/SFB_en"); 
+
 				Futile.atlasManager.LoadFont("font", "font", "Atlases/font", 0, 0);
 
 		
 		_stage = Futile.stage;
 		
-		 GoToPage(PageType.InGamePage);
+		 GoToPage(PageType.MenuPage);
 		
 		_stage.ListenForUpdate (HandleUpdate);
 		
@@ -64,7 +66,7 @@ public class SuperFutileBox : MonoBehaviour {
 		}
 		if(pageType == PageType.InGamePage)
 		{
-			pageToCreate = new InGamePage(2);
+			pageToCreate = new InGamePage();
 		}
 
 		if(pageToCreate != null)

@@ -8,6 +8,8 @@ public class Player : Entity {
 	public FParticleDefinition pd;
 	bool canJump=false;
 	bool facingLeft;
+	private FAnimatedSprite sprite;
+	
 	public static Player Create(InGamePage world, Vector2 pos){
 		GameObject GObj = new GameObject("JumpMan");
 		Player body = GObj.AddComponent<Player>();
@@ -19,7 +21,10 @@ public class Player : Entity {
 		body.Sprite.color=cl;
 		body.Sprite.width = body.Size.x;
 		body.Sprite.height = body.Size.y;
-
+		
+		body.sprite = new FAnimatedSprite(new FAnimation("standing","standing",40,40,0,0,2,120,true));
+		body.sprite.addAnimation(new FAnimation("walking","standing",40,40,0,1,2,120,true));
+		
 		return body;
 	}
 	
@@ -30,7 +35,7 @@ public class Player : Entity {
 		gameObject.transform.parent = GamePage.root.transform;
 		bodyLink = gameObject.AddComponent<FPNodeLink>();
 		bodyLink.Init(Holder, false);
-		Holder.AddChild(Sprite);
+		Holder.AddChild(sprite);
 		AngularDrag=5f;
 		Mass=1f;
 		Bounciness=0.5f;
@@ -86,11 +91,17 @@ public class Player : Entity {
 	public override void Update(){
 		if(this.GamePage.leftArrow){
 			facingLeft=true;
+			sprite.scaleX = -1.0f;
 			gameObject.transform.position = new Vector3(gameObject.transform.position.x-0.1f, gameObject.transform.position.y, gameObject.transform.position.z);		
-		}
+			sprite.play("walking");
+		}else
 		if(this.GamePage.rightArrow){
 			facingLeft=false;
+			sprite.scaleX = 1.0f;
 			gameObject.transform.position = new Vector3(gameObject.transform.position.x+0.1f, gameObject.transform.position.y, gameObject.transform.position.z);		
+			sprite.play("walking");
+		}else{
+			sprite.play("standing");
 		}
 	}
 	
@@ -99,7 +110,13 @@ public class Player : Entity {
 			canJump=false;
 			gameObject.rigidbody.AddRelativeForce(transform.up * 8, ForceMode.Impulse);
 			generateParticles();
+			FSoundManager.PlaySound("jump");
+
 		}
+	}
+	
+	public void getDown(){
+			gameObject.rigidbody.AddRelativeForce(new Vector2(0,-1) * 8, ForceMode.Impulse);
 	}
 	
 	public void setAttack(){
@@ -114,6 +131,8 @@ public class Player : Entity {
 			spawnpos.x+=20f;
 		 pro = Projectile.Create(GamePage,spawnpos , new Vector2(1,0), new FSprite("Futile_White"));
 		}pro.Init();
+				FSoundManager.PlaySound("laser");
+
 	}
 	
 	void generateParticles(){
@@ -147,6 +166,7 @@ public class Player : Entity {
 		UnityEngine.Object.Destroy(gameObject);
 		Holder.RemoveFromContainer();
 		GamePage.callGameOver();
+						FSoundManager.PlaySound("atari_boom5");
 
 	}
 }

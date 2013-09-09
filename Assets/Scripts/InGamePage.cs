@@ -4,7 +4,6 @@ using System;
 
 public class InGamePage : Page {
 	// Use this for initialization
-	int mode=0;
 	public FContainer _playerSpheres;
 	public FContainer _gameObjects;
 	public FContainer _enemyContainer;
@@ -24,8 +23,8 @@ public class InGamePage : Page {
 	int Score;
 	public FPWorld root;
 	
-	public InGamePage(int difficulty){
-		mode = difficulty;
+	public InGamePage(){
+		
 	}
 
 	override public void Start () {
@@ -47,17 +46,17 @@ public class InGamePage : Page {
 		CreateWorld();
 		InitPlayer();
 		scoreLabel = new FLabel("font", "Score = "+ Score);
-		gameOver = new FLabel("font", "Game Over, try again!");
+		gameOver = new FLabel("font", "Game Over, press 'R' to try again!");
 		scoreLabel.SetAnchor(new Vector2(0,-10));
 		AddChild(scoreLabel);
+		
+		FSoundManager.PlayMusic("chipzel_Otis");
+		FSoundManager.isMuted=false;
 	}
 	
 	// Update is called once per frame
 	public void Update () {
 		
-		foreach(Platform platform in platforms){
-			platform.Update();
-		}
 		if(!GameOver){
 		//Key Controllers
 		if (Input.GetKeyDown (KeyCode.LeftArrow)){
@@ -72,19 +71,38 @@ public class InGamePage : Page {
 		if (Input.GetKeyDown (KeyCode.X)){
 			jugador.setAttack();
 		}
+		if (Input.GetKeyDown (KeyCode.DownArrow)){
+			jugador.getDown();
+		}
 		if (Input.GetKeyUp (KeyCode.LeftArrow)){
 			leftArrow=false;
 		}
 		if (Input.GetKeyUp (KeyCode.RightArrow)){
 			rightArrow=false;
 		}	
-		}
 		if((_frameCount%120)==0){
 				GenerateMonster();
 		}
+		}else{
+			if (Input.GetKeyDown (KeyCode.R)){
+			RemoveChild(_enemyContainer);
+			_enemyContainer = new FContainer(); 
+			AddChild(_enemyContainer);
+			Score=0;
+			GameOver=false;
+			_playerBullets.RemoveAllChildren();
+			FSoundManager.isMuted=false;		
+				FSoundManager.PlayMusic("chipzel_Otis");
+			InitPlayer();
+						scoreLabel.text="Score = "+Score;
+
+			RemoveChild(gameOver);
+				rightArrow=false;
+				leftArrow=false;
+			}
+		}
+		
 				_frameCount++;
-		
-		
 	}
 	
 	/*
@@ -124,64 +142,13 @@ public class InGamePage : Page {
 	}
 	
 	void GenerateMonster(){
-		Enemy enemigo = Enemy.Create(this,SpawnPoint,1);
+		var arr1 = new[]{1,-1};
+		var rndMember = arr1[new System.Random().Next(arr1.Length)];
+		Enemy enemigo;
+		enemigo = Enemy.Create(this,SpawnPoint,rndMember);
 		enemigo.Init();
 	}
 	
-	
-	/*
-	 * TouchKit gesture listeners.	
-	 */
-	
-	void setGestureSignals(){
-		var TapRecognizer = new TKTapRecognizer();
-		var LongTapRecognizer = new TKLongPressRecognizer();
-		var LeftSwipeRecognizer = new TKSwipeRecognizer( TKSwipeDirection.Left);
-		var RightSwipeRecognizer = new TKSwipeRecognizer( TKSwipeDirection.Left);
-		var PinchRecognizer = new TKPinchRecognizer();
-		var RotationRecognizer = new TKRotationRecognizer();
-		
-		TapRecognizer.gestureRecognizedEvent += ( r ) =>
-			{
-				Debug.Log( "tap recognizer fired: " + r );
-				
-			};
-		TouchKit.addGestureRecognizer( TapRecognizer );
-		
-		LongTapRecognizer.gestureRecognizedEvent += ( r ) =>
-			{
-				Debug.Log( "long press recognizer fired: " + r );
-			};
-		LongTapRecognizer.gestureCompleteEvent += ( r ) =>
-			{
-				Debug.Log( "long press recognizer finished: " + r );
-			};
-			TouchKit.addGestureRecognizer( LongTapRecognizer );
-		
-		LeftSwipeRecognizer.gestureRecognizedEvent += ( r ) =>
-			{
-				Debug.Log( "left swipe recognizer fired: " + r );
-			};
-			TouchKit.addGestureRecognizer( LeftSwipeRecognizer );
-		
-		RightSwipeRecognizer.gestureRecognizedEvent += ( r ) =>
-			{
-				Debug.Log( "right swipe recognizer fired: " + r );
-			};
-			TouchKit.addGestureRecognizer( RightSwipeRecognizer );
-		
-		PinchRecognizer.gestureRecognizedEvent += ( r ) =>
-			{
-				Debug.Log( "pinch recognizer fired: " + r );
-			};
-			TouchKit.addGestureRecognizer( PinchRecognizer );
-		
-		RotationRecognizer.gestureRecognizedEvent += ( r ) =>
-			{
-				Debug.Log( "rotation recognizer fired: " + r );
-			};
-			TouchKit.addGestureRecognizer( RotationRecognizer );
-	}
 	public void setScore(int x){
 		Score+=x;	
 		scoreLabel.text="Score = "+ Score;
@@ -189,6 +156,7 @@ public class InGamePage : Page {
 	public void callGameOver(){
 		GameOver=true;
 		AddChild(gameOver);
+		FSoundManager.StopMusic();
 	}
 	
 	//set to get

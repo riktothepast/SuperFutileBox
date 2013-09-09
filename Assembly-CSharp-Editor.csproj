@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\Futile\Rix\Editor\RXProfilerEditor.cs" />
      <Compile Include="Assets\Futile\Rix\Editor\RXWatcherLinkEditor.cs" />
+     <None Include="Assets\Resources\Atlases\SFB_en.txt" />
      <None Include="Assets\Futile\Resources\Shaders\AdditiveColor.shader" />
      <None Include="Assets\Futile\Resources\Shaders\Additive.shader" />
      <None Include="Assets\Resources\Atlases\font.txt" />
