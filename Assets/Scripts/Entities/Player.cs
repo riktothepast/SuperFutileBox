@@ -71,15 +71,10 @@ public class Player : Entity {
 			if(collision.collider.name.Equals("Platform")&&(contact.normal.y>0)){
 				canJump=true;
 			}
-			if(collision.collider.name.Equals("Enemy")){
-				//kill the player
-				
-				
-			}
             Debug.DrawRay(contact.point, contact.normal, Color.white);
         }
 		if(collision.collider.name.Equals("Bottom"))
-				kill();
+				kill ();
 			
 		if(collision.collider.name.Equals("Enemy"))
 			kill ();
@@ -168,5 +163,10 @@ public class Player : Entity {
 		GamePage.callGameOver();
 						FSoundManager.PlaySound("atari_boom5");
 
+	}
+	
+	void setAtSpawnPoint(){
+		gameObject.transform.position = new Vector3(GamePage.SpawnPoint.x*FPhysics.POINTS_TO_METERS, GamePage.SpawnPoint.y*FPhysics.POINTS_TO_METERS, gameObject.transform.position.z);		
+		Debug.Log(gameObject.transform.position);
 	}
 }

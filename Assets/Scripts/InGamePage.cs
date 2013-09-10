@@ -13,7 +13,7 @@ public class InGamePage : Page {
 	public List<Projectile> projectiles = new List<Projectile>();
 	public List<Enemy> enemies = new List<Enemy>();
 	Player jugador;
-	public Vector2 SpawnPoint=new Vector2(0,300);
+	public Vector2 SpawnPoint=new Vector2(0,350);
 	public bool leftArrow, rightArrow;
 	RXCircle midBounds;
 	public FParticleSystem impactParticles;
@@ -31,7 +31,6 @@ public class InGamePage : Page {
 		root = FPWorld.Create(64.0f);
 		screenCenter=new Vector2(Futile.screen.halfWidth,Futile.screen.halfHeight);
 		ListenForUpdate(Update);
-
 		_gameObjects = new FContainer(); 
 		AddChild(_gameObjects);
 		_enemyContainer = new FContainer(); 
@@ -50,11 +49,13 @@ public class InGamePage : Page {
 		scoreLabel.SetAnchor(new Vector2(0,-10));
 		AddChild(scoreLabel);
 		
-		FSoundManager.PlayMusic("chipzel_Otis");
+		FSoundManager.PlayMusic("Barymag");
 		FSoundManager.isMuted=false;
 	}
 	
-	// Update is called once per frame
+	/*
+	 * La actualizacion se llama cada cuadro de actualizacion
+	 */
 	public void Update () {
 		
 		if(!GameOver){
@@ -80,6 +81,7 @@ public class InGamePage : Page {
 		if (Input.GetKeyUp (KeyCode.RightArrow)){
 			rightArrow=false;
 		}	
+			//para evitar llenar de enmigos, solo crearemos uno si se cumple esta condicion
 		if((_frameCount%120)==0){
 				GenerateMonster();
 		}
@@ -92,21 +94,19 @@ public class InGamePage : Page {
 			GameOver=false;
 			_playerBullets.RemoveAllChildren();
 			FSoundManager.isMuted=false;		
-				FSoundManager.PlayMusic("chipzel_Otis");
+				FSoundManager.PlayMusic("Barymag");
 			InitPlayer();
 						scoreLabel.text="Score = "+Score;
-
 			RemoveChild(gameOver);
 				rightArrow=false;
 				leftArrow=false;
 			}
 		}
-		
 				_frameCount++;
 	}
 	
 	/*
-	 * Creates the boundaries for the game, platforms and wall "limits"
+	 * Creamos plataformas para el juego y "paredes izquierda y derecha"
 	 * 
 	 */
 	
@@ -134,6 +134,7 @@ public class InGamePage : Page {
 		//enemy goal
 		plat= Platform.Create(this,new Vector2(0,-380),0f,new Vector2(340,40),new FSprite("Futile_White"),"Bottom");
 		plat.Init();
+		
 	}
 	
 	void InitPlayer(){

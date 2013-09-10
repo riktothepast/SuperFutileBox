@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>unity</string>
         <key>textureFileName</key>
-        <filename>../../../../../../Desktop/SFB/SFB.png</filename>
+        <filename>../../../../../../Desktop/SFB/SFB_en.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -70,7 +70,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -82,14 +82,14 @@
             <key>maxRects</key>
             <struct type="AlgorithmMaxRectsSettings">
                 <key>heuristic</key>
-                <enum type="AlgorithmMaxRectsSettings::Heuristic">Best</enum>
+                <enum type="AlgorithmMaxRectsSettings::Heuristic">ContactPoint</enum>
             </struct>
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
                 <key>order</key>
-                <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
+                <enum type="AlgorithmBasicSettings::Order">Descending</enum>
             </struct>
         </struct>
         <key>andEngine</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../../../../../Desktop/SFB/SFB.txt</filename>
+        <filename>../../../../../../Desktop/SFB/SFB_en.txt</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,10 +148,9 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../../../../Desktop/SFB/platform.png</filename>
-            <filename>../../../../../../Desktop/SFB/bounds.png</filename>
-            <filename>../../../../../../Desktop/SFB/font.png</filename>
-            <filename>../../../../../../Desktop/SFB/boton.png</filename>
+            <filename>../../../../../../Desktop/SFB/standing.png</filename>
+            <filename>../../../../../../Desktop/SFB/enewalk.png</filename>
+            <filename>../../../../../../Desktop/SFB/running.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

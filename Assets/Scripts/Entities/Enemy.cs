@@ -64,6 +64,10 @@ public class Enemy : Entity {
 		
 	}
 	
+	/*
+	 * El enemigo se mueve hacia la direccion que tiene asignada.
+	 */
+	
 	public override void Update(){
 		if(direction>0){
 			sprite.scaleX=1f;
@@ -79,6 +83,11 @@ public class Enemy : Entity {
 			Destroy();
 		}
 	}
+	
+	/*
+	 * Si encuentra una colision cambia la direccion a la que se dirige,
+	 * si encuentra la plataforma "Bottom" reiniciamos al enemigo en su posicion inicial y aumentamos su velocidad.
+	 */
 	
 	void OnCollisionEnter(Collision collision) {
 		if(collision.collider.name.Equals("Left")||collision.collider.name.Equals("Right")||collision.collider.name.Equals("Enemy")){

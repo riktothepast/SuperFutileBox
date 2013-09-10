@@ -17,7 +17,7 @@ public class MenuPage : Page {
 		_startButton.AddLabel("font","Play!",new Color(0,0,20,1f));
 		_startButton.scale=2f;
 		_titleLabel = new FLabel("font","Super Futile Box");
-		_instLabel = new FLabel("font","- Move with Arrow keys \n - Press 'space' to jump \n - Down key to fast fall \n - Avoid enemies!!!");
+		_instLabel = new FLabel("font","- Move with Arrow keys \n - Press 'space' to jump \n - Down key to fast fall \n - Avoid enemies!!! \n \n Tune:  Barymag #2 - 8 by Lukasz Sychowicz (X-Ray)");
 		AddChild(_startButton);
 		AddChild(_titleLabel);
 		AddChild(_instLabel);

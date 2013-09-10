@@ -11,8 +11,8 @@ public class RXWatcherLinkEditor : Editor
 	public static Type COLOR = typeof(Color);
 	public static Type VECTOR2 = typeof(Vector2);
 
-	public RXWatcherLink link = null;
-
+	RXWatcherLink link=null;
+	
 	public void OnEnable()
 	{
 		link = target as RXWatcherLink;

@@ -62,6 +62,11 @@ public class Projectile : Entity {
 			}
     }
 	
+	/*
+	 * La logica del proyectil, simplemente se mueve hacia donde su aceleracion le indique, 
+	 * aca podemos cambiar la logica para diferentes implementaciones de proyectiles.
+	 */
+	
 	public override void Update()
 	{
 		gameObject.transform.position = new Vector3(gameObject.transform.position.x+(Aceleration.x*0.5f), gameObject.transform.position.y, gameObject.transform.position.z);		
