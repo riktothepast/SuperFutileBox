@@ -106,9 +106,11 @@ public class Enemy : Entity {
 	}
 	
 	public void Destroy(){
+		if(gameObject!=null){
 		UnityEngine.Object.Destroy(gameObject);
 		Holder.RemoveFromContainer();
-								FSoundManager.PlaySound("atari_boom4");
+		FSoundManager.PlaySound("atari_boom4");
+		}
 
 	}
 	

@@ -83,14 +83,21 @@ public class InGamePage : Page {
 		}	
 			//para evitar llenar de enmigos, solo crearemos uno si se cumple esta condicion
 		if((_frameCount%120)==0){
-				GenerateMonster();
+				if(!GameOver)
+					GenerateMonster();
 		}
 		}else{
 			if (Input.GetKeyDown (KeyCode.R)){
-			RemoveChild(_enemyContainer);
-			_enemyContainer = new FContainer(); 
+ 
 				for(int x = 0; x<enemies.Count; x++)
-					enemies[x].Destroy();
+				{
+					if(enemies[x]!=null)
+						enemies[x].Destroy();
+				}
+
+				RemoveChild(_enemyContainer);
+				_enemyContainer = new FContainer();
+
 			AddChild(_enemyContainer);
 			Score=0;
 			GameOver=false;
@@ -160,7 +167,6 @@ public class InGamePage : Page {
 	public void callGameOver(){
 		GameOver=true;
 		AddChild(gameOver);
-		_enemyContainer.RemoveAllChildren();
 		FSoundManager.StopMusic();
 	}
 	
