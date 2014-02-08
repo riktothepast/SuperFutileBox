@@ -89,6 +89,8 @@ public class InGamePage : Page {
 			if (Input.GetKeyDown (KeyCode.R)){
 			RemoveChild(_enemyContainer);
 			_enemyContainer = new FContainer(); 
+				for(int x = 0; x<enemies.Count; x++)
+					enemies[x].Destroy();
 			AddChild(_enemyContainer);
 			Score=0;
 			GameOver=false;
@@ -147,6 +149,7 @@ public class InGamePage : Page {
 		var rndMember = arr1[new System.Random().Next(arr1.Length)];
 		Enemy enemigo;
 		enemigo = Enemy.Create(this,SpawnPoint,rndMember);
+		enemies.Add (enemigo);
 		enemigo.Init();
 	}
 	
@@ -157,6 +160,7 @@ public class InGamePage : Page {
 	public void callGameOver(){
 		GameOver=true;
 		AddChild(gameOver);
+		_enemyContainer.RemoveAllChildren();
 		FSoundManager.StopMusic();
 	}
 	

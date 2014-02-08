@@ -105,7 +105,7 @@ public class Enemy : Entity {
 		life-=x;
 	}
 	
-	void Destroy(){
+	public void Destroy(){
 		UnityEngine.Object.Destroy(gameObject);
 		Holder.RemoveFromContainer();
 								FSoundManager.PlaySound("atari_boom4");
